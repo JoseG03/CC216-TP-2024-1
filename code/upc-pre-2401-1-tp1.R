@@ -7,6 +7,7 @@ cat("\014")
 # 2. Cargamos las librerías necesarias
 library(ggplot2)
 library(dplyr)
+library(knitr)
 
 # Definir la función checkingOutliers
 checkingOutliers <- function(df) {
@@ -71,6 +72,26 @@ datos_limpios <- read.csv(path, header = TRUE, stringsAsFactors = FALSE)
 
 #-------------------------OBSERVACION DE DATOS--------------------
 str(datos_limpios)
+View(datos.limpios)
+
+estructura_datos <- data.frame(
+  Variable = names(datos.limpios),
+  Tipo = sapply(datos.limpios, class),
+  Descripción = c("Tipo de hotel", "Indicador de cancelación", "Tiempo de antelación", 
+                  "Año de llegada", "Mes de llegada", "Número de semana de llegada", 
+                  "Día del mes de llegada", "Noches de fin de semana", 
+                  "Noches de semana", "Adultos", "Niños", "Bebés", "Comida", 
+                  "País", "Segmento de mercado", "Canal de distribución", 
+                  "Cliente repetido", "Cancelaciones previas", 
+                  "Reservas no canceladas previas", "Tipo de habitación reservada", 
+                  "Tipo de habitación asignada", "Cambios en la reserva", 
+                  "Tipo de depósito", "Agente", "Empresa", "Días en lista de espera", 
+                  "Tipo de cliente", "ADR", "Espacios de estacionamiento requeridos", 
+                  "Solicitudes especiales totales", "Estado de la reserva", 
+                  "Fecha de estado de la reserva")
+)
+
+kable(estructura_datos)
 
 #-------------------------1. RESERVAS POR TIPO DE HOTEL --------------------
 
